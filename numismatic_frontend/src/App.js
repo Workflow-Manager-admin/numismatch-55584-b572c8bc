@@ -86,11 +86,11 @@ function CatalogImport({ onUpload, loading, uploadErr, lastCatalogFilename, last
 /** PUBLIC_INTERFACE
  * ImageUpload: Upload an item image for matching
  */
-function ImageUpload({ onUpload, uploading, uploadErr, matchedItem, noMatch, itemDetails, onReset }) {
-  const imgInputRef = useRef();
+function DocumentUpload({ onUpload, uploading, uploadErr, matchedItem, noMatch, itemDetails, onReset }) {
+  const fileInputRef = useRef();
 
   // PUBLIC_INTERFACE
-  const handleImageFile = (e) => {
+  const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) onUpload(file);
   };
@@ -99,22 +99,25 @@ function ImageUpload({ onUpload, uploading, uploadErr, matchedItem, noMatch, ite
     <div className="main-section">
       <h2>Match Item</h2>
       <p>
-        Upload a photo to match it with your coin catalog.
+        Upload a photo or PDF document to match it with your coin catalog.<br />
+        <span className="file-accept-note">
+          Accepted formats: <strong>Images</strong> (jpg, png, etc.) or <strong>PDF</strong>
+        </span>
       </p>
       <input
         type="file"
-        accept="image/*"
-        ref={imgInputRef}
+        accept="image/*,.pdf"
+        ref={fileInputRef}
         style={{ display: "none" }}
-        onChange={handleImageFile}
-        aria-label="Upload coin image"
+        onChange={handleFileUpload}
+        aria-label="Upload coin image or PDF"
       />
       {(!matchedItem && !itemDetails && !noMatch) && (
         <button className="accent-btn"
-          onClick={() => imgInputRef.current.click()}
+          onClick={() => fileInputRef.current.click()}
           disabled={!!uploading}
         >
-          {uploading ? <span className="loader" /> : "Select Coin Image"}
+          {uploading ? <span className="loader" /> : "Select File"}
         </button>
       )}
       {uploadErr && <div className="alert alert-error">{uploadErr}</div>}
@@ -267,10 +270,10 @@ async function uploadCatalogFile(file) {
   if (!res.ok) throw new Error(await res.text());
   return await res.json();
 }
-async function matchCoinImage(file) {
-  /* PUBLIC_INTERFACE: Uploads coin image for matching. Returns match result or {not_found: true}. */
+async function matchCoinDocument(file) {
+  /* PUBLIC_INTERFACE: Uploads coin image or PDF for matching. Returns match result or {not_found: true}. */
   const form = new FormData();
-  form.append("image", file);
+  form.append("document", file);
   const res = await fetch(`${API_BASE}/match`, {
     method: "POST",
     body: form
@@ -290,7 +293,7 @@ function App() {
   // Section navigation state
   const NAV_SECTIONS = [
     { key: "catalog", label: "Catalog", icon: "📚" },
-    { key: "match", label: "Match Image", icon: "🖼️" },
+    { key: "match", label: "Match Item", icon: "🖼️" },
     { key: "listing", label: "Catalog Listing", icon: "🔎" }
   ];
   const [section, setSection] = useState("catalog");
@@ -370,11 +373,11 @@ function App() {
   // eslint-disable-next-line
   }, [section]);
 
-  const handleImgUpload = async (file) => {
+  const handleDocUpload = async (file) => {
     setImgUploading(true);
     setImgError(""); setMatchedItem(null); setItemDetails(null); setItemNotFound(false);
     try {
-      const res = await matchCoinImage(file);
+      const res = await matchCoinDocument(file);
       if (res.not_found || !res.item) {
         setItemNotFound(true);
         setMatchedItem(null);
@@ -422,8 +425,8 @@ function App() {
           />
         )}
         {section === "match" && (
-          <ImageUpload
-            onUpload={handleImgUpload}
+          <DocumentUpload
+            onUpload={handleDocUpload}
             uploading={imgUploading}
             uploadErr={imgError}
             matchedItem={matchedItem}
