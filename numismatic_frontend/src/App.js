@@ -51,12 +51,12 @@ function CatalogImport({ onUpload, loading, uploadErr, lastCatalogFilename, last
       <p>
         Upload a numismatic catalog file.<br />
         <span className="file-accept-note">
-          Accepted format: <strong>CSV</strong> (.csv)
+          Accepted formats: <strong>Images</strong> (jpg, png, etc.) or <strong>PDF</strong>
         </span>
       </p>
       <input
         type="file"
-        accept=".csv"
+        accept="image/*,.pdf"
         ref={fileInputRef}
         style={{ display: "none" }}
         onChange={handleCatalogFile}

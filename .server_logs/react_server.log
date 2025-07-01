@@ -6,9 +6,9 @@ Attempting to bind to HOST environment variable: 0.0.0.0
 If this was unintentional, check that you haven't mistakenly set it in your shell.
 Learn more here: https://cra.link/advanced-config
 
-(node:1844) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:4018) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:1844) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:4018) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
 Compiled successfully!
@@ -22,91 +22,6 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 
 webpack compiled successfully
-Compiling...
-Failed to compile.
-
-[eslint] 
-src/App.js
-  Line 428:12:  'ImageUpload' is not defined  react/jsx-no-undef
-
-Search for the keywords to learn more about each error.
-WARNING in [eslint] 
-src/App.js
-  Line 89:10:  'DocumentUpload' is defined but never used  no-unused-vars
-
-ERROR in [eslint] 
-src/App.js
-  Line 428:12:  'ImageUpload' is not defined  react/jsx-no-undef
-
-Search for the keywords to learn more about each error.
-
-webpack compiled with 1 error and 1 warning
-Compiling...
-Failed to compile.
-
-[eslint] 
-src/App.js
-  Line 380:25:  'matchCoinImage' is not defined  no-undef
-  Line 428:12:  'ImageUpload' is not defined     react/jsx-no-undef
-
-Search for the keywords to learn more about each error.
-WARNING in [eslint] 
-src/App.js
-  Line 89:10:   'DocumentUpload' is defined but never used     no-unused-vars
-  Line 273:16:  'matchCoinDocument' is defined but never used  no-unused-vars
-
-ERROR in [eslint] 
-src/App.js
-  Line 380:25:  'matchCoinImage' is not defined  no-undef
-  Line 428:12:  'ImageUpload' is not defined     react/jsx-no-undef
-
-Search for the keywords to learn more about each error.
-
-webpack compiled with 1 error and 1 warning
-Compiling...
-Failed to compile.
-
-[eslint] 
-src/App.js
-  Line 428:12:  'ImageUpload' is not defined      react/jsx-no-undef
-  Line 429:23:  'handleImgUpload' is not defined  no-undef
-
-Search for the keywords to learn more about each error.
-WARNING in [eslint] 
-src/App.js
-  Line 89:10:  'DocumentUpload' is defined but never used            no-unused-vars
-  Line 376:9:  'handleDocUpload' is assigned a value but never used  no-unused-vars
-
-ERROR in [eslint] 
-src/App.js
-  Line 428:12:  'ImageUpload' is not defined      react/jsx-no-undef
-  Line 429:23:  'handleImgUpload' is not defined  no-undef
-
-Search for the keywords to learn more about each error.
-
-webpack compiled with 1 error and 1 warning
-Compiling...
-Failed to compile.
-
-[eslint] 
-src/App.js
-  Line 428:12:  'ImageUpload' is not defined      react/jsx-no-undef
-  Line 429:23:  'handleImgUpload' is not defined  no-undef
-
-Search for the keywords to learn more about each error.
-WARNING in [eslint] 
-src/App.js
-  Line 89:10:  'DocumentUpload' is defined but never used            no-unused-vars
-  Line 376:9:  'handleDocUpload' is assigned a value but never used  no-unused-vars
-
-ERROR in [eslint] 
-src/App.js
-  Line 428:12:  'ImageUpload' is not defined      react/jsx-no-undef
-  Line 429:23:  'handleImgUpload' is not defined  no-undef
-
-Search for the keywords to learn more about each error.
-
-webpack compiled with 1 error and 1 warning
 Compiling...
 Compiled successfully!
 webpack compiled successfully
